@@ -12,6 +12,44 @@ body{
     background-color: rgb(220, 220, 220);
 }
 
+.dashboard{
+    width: 100px;
+    height: 90px;
+    border: 1px solid transparent;
+    margin-left: 25%;
+    margin-top: 5px;
+    border-radius: 10px;
+    background-color: rgb(96, 204, 96);
+    overflow: hidden;
+	box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+	transition: all 200ms ease-out;
+	cursor: default;
+}
+
+.dashboard:hover{
+	box-shadow: 5px 5px 20px rgba(0,0,0,0.4);
+	transform: translateY(-3%);
+}
+
+.dash_button{
+    width: 99px;
+    height: 89px;
+    background-color: transparent;
+    border: none;
+}
+
+.dashboard:active{
+    background-color: rgb(63, 138, 63);
+}
+
+.dash{
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .itau_logo{
     width: 100px;
     height: 100px;
@@ -19,8 +57,7 @@ body{
 
 .titulo_groot{
     text-align: center;
-    margin-left: 25%;
-    margin-right: auto;
+    margin-left: 28%;
     margin-top: 30px;
 }
 
@@ -47,6 +84,7 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 25px;
     margin-top: 10px;
+    color: rgb(246, 246, 246);
 }
 
 .vs{
