@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
     <title>Groot Web</title>
 </head>
 <body>
@@ -19,3 +19,19 @@
         <h1 class="titulo_groot">DashBoard</h1>
         <div class="dashboard"><button class="dash_button"><img class="dash" src="/Img/dashboard.png" alt=""></button></div>
     </header>
+    <main>
+
+      <section class="container-box">
+        <div class="box"><canvas id="myChart"></canvas></div>
+        <div class="box"><canvas id="myChart2"></canvas></div>     
+      </section>
+
+      <section class="container-box">
+        <div class="box"><canvas class="donut" id="myChart3"></canvas></div>
+        <div class="box"><canvas id="myChart4"></canvas></div>     
+      </section>
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script src="/javascript/scripts.js"></script>
+</body>
