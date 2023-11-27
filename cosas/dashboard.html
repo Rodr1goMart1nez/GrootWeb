@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'img/Groot icon.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Groot Web</title>
+    {% include "groot_dash.html" %}
+</head>
+<body>
+    <header>
+        <img class="itau_logo" src="{% static 'img/Banco_Itaú_logo.png' %}" alt="">
+        <a class="back" href="/"><img class="back_img" src="{% static 'img/circulo-de-flecha.png' %}" alt=""></a>
+        <h1 class="titulo_groot">DashBoard</h1>
+    </header>
+    <main>
+
+      <section class="container-box">
+        <div class="box"><canvas id="myChart"></canvas></div>
+        <div class="box"><canvas id="myChart2"></canvas></div>     
+      </section>
+
+      <section class="container-box">
+        <div class="box"><canvas class="donut" id="myChart3"></canvas></div>
+        <div class="box"><canvas id="myChart4"></canvas></div>     
+      </section>
+
+    </main>
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.umd.js"></script>
+    {% include "groot_charts.html" %}
+</body>
