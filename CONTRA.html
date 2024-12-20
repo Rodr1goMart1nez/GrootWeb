@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Dividido en Línea</title>
+    <style>
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px; /* Reducir el margen inferior */
+        }
+        .form-row div {
+            flex: 1;
+            margin-right: 5px; /* Reducir el margen derecho */
+        }
+        .form-row div:last-child {
+            margin-right: 0;
+        }
+        .hidden {
+            display: none;
+        }
+        select {
+            width: 100%; /* Asegura que los select llenen el ancho del contenedor */
+        }
+        label {
+            display: block;
+            margin-bottom: 2px; /* Reduce el margen inferior del label */
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <!-- Primera fila del formulario -->
+        <div class="form-row" id="part1">
+            <div>
+                <label for="input1">Input 1</label>
+                <select id="input1" name="input1">
+                    <option value="opcion1">Opción 1</option>
+                    <option value="opcion2">Opción 2</option>
+                    <option value="opcion3">Opción 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="input2">Input 2</label>
+                <select id="input2" name="input2">
+                    <option value="opcion1">Opción 1</option>
+                    <option value="opcion2">Opción 2</option>
+                    <option value="opcion3">Opción 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="input3">Input 3</label>
+                <select id="input3" name="input3">
+                    <option value="opcion1">Opción 1</option>
+                    <option value="opcion2">Opción 2</option>
+                    <option value="opcion3">Opción 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="input4">Input 4</label>
+                <select id="input4" name="input4">
+                    <option value="opcion1">Opción 1</option>
+                    <option value="opcion2">Opción 2</option>
+                    <option value="opcion3">Opción 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="input5">Input 5</label>
+                <select id="input5" name="input5">
+                    <option value="opcion1">Opción 1</option>
+                    <option value="opcion2">Opción 2</option>
+                    <option value="opcion3">Opción 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="input6">Input 6</label>
+                <select id="input6" name="input6">
+                    <option value="opcion1">Opción 1</option>
+                    <option value="opcion2">Opción 2</option>
+                    <option value="opcion3">Opción 3</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Segunda fila del formulario -->
+        <div class="form-row hidden" id="part2">
+            <div>
+                <label for="input7">Input 7</label>
+                <select id="input7" name="input7">
+                    <option value="opcion1">Opción 1</option>
+                    <option value="opcion2">Opción 2</option>
+                    <option value="opcion3">Opción 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="input8">Input 8</label>
+                <select id="input8" name="input8">
+                    <option value="opcion1">Opción 1</option>
+                    <option value="opcion2">Opción 2</option>
+                    <option value="opcion3">Opción 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="input9">Input 9</label>
+                <select id="input9" name="input9">
+                    <option value="opcion1">Opción 1</option>
+                    <option value="opcion2">Opción 2</option>
+                    <option value="opcion3">Opción 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="input10">Input 10</label>
+                <select id="input10" name="input10">
+                    <option value="opcion1">Opción 1</option>
+                    <option value="opcion2">Opción 2</option>
+                    <option value="opcion3">Opción 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="input11">Input 11</label>
+                <select id="input11" name="input11">
+                    <option value="opcion1">Opción 1</option>
+                    <option value="opcion2">Opción 2</option>
+                    <option value="opcion3">Opción 3</option>
+                </select>
+            </div>
+            <div>
+                <label for="input12">Input 12</label>
+                <select id="input12" name="input12">
+                    <option value="opcion1">Opción 1</option>
+                    <option value="opcion2">Opción 2</option>
+                    <option value="opcion3">Opción 3</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Botón para mostrar/ocultar la segunda parte -->
+        <button type="button" onclick="togglePart2()">Mostrar/Ocultar Parte 2</button>
+        
+        <!-- Botón de envío del formulario -->
+        <button type="submit">Enviar Formulario</button>
+    </form>
+    
+    <script>
+        function togglePart2() {
+            const part2 = document.getElementById('part2');
+            if (part2.classList.contains('hidden')) {
+                part2.classList.remove('hidden');
+            } else {
+                part2.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
