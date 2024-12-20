@@ -1,9 +1,17 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Dividido en Línea</title>
+    <link rel="shortcut icon" href="{% static 'imgs/contra/img/ItauBanco.png' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <title>Tablero Interactivo</title>
+    {% include "contra_index.html" %}
     <style>
         .form-row {
             display: flex;
@@ -30,55 +38,72 @@
     </style>
 </head>
 <body>
-    <form id="myForm">
+    <header>
+        <img class="itau_logo" src="{% static 'imgs/groot/Img/Itaú_Unibanco_logo.png' %}" alt="">
+        <h1 class="titulo_groot">Contracargo Interactivo</h1>
+    </header>
+
+    <form class="form-dash" action="/contra/grafico_interactivo/" method="POST">{% csrf_token %}
         <!-- Primera fila del formulario -->
         <div class="form-row" id="part1">
             <div>
-                <label for="input1">Input 1</label>
-                <select id="input1" name="input1">
-                    <option value="opcion1">Opción 1</option>
-                    <option value="opcion2">Opción 2</option>
-                    <option value="opcion3">Opción 3</option>
+                <label class="label_marca" for="columna_x1">X:</label>
+                <select class="opcion-dash opcion-dash2" name="columna_x1" id="columna_x1">
+                    {% for columna in columnas_disponibles_contra %}
+                        <option value="{{ columna }}" {% if columna|yesno:"selected,"|default:"" %} selected {% endif %}>{{ columna }}</option>
+                    {% endfor %}
                 </select>
             </div>
             <div>
-                <label for="input2">Input 2</label>
-                <select id="input2" name="input2">
-                    <option value="opcion1">Opción 1</option>
-                    <option value="opcion2">Opción 2</option>
-                    <option value="opcion3">Opción 3</option>
+                <label class="label_marca" for="columna_y1">Y:</label>
+                <select class="opcion-dash opcion-dash2" name="columna_y1" id="columna_y1">
+                    {% for columna in columnas_disponibles_contra %}
+                        <option value="{{ columna }}" {% if columna|yesno:"selected,"|default:"" %} selected {% endif %}>{{ columna }}</option>
+                    {% endfor %}
                 </select>
             </div>
             <div>
-                <label for="input3">Input 3</label>
-                <select id="input3" name="input3">
-                    <option value="opcion1">Opción 1</option>
-                    <option value="opcion2">Opción 2</option>
-                    <option value="opcion3">Opción 3</option>
+                <label class="label_marca">Gráfico</label>
+                <select class="opcion-dash opcion-grafico" name="tipo_grafico" id="tipo_grafico">
+                    <option value='line'>De Línea</option>
+                    <option value='bar'>De Barras</option>
+                    <option value='doughnut'>De Dona</option>
+                    <option value='pie'>De Tarta</option>
+                    <option value='polarArea'>Polar</option>
+                    <option value='radar'>Radar</option>
+                    <option value='scatter'>De Dispersión</option>
                 </select>
             </div>
             <div>
-                <label for="input4">Input 4</label>
-                <select id="input4" name="input4">
-                    <option value="opcion1">Opción 1</option>
-                    <option value="opcion2">Opción 2</option>
-                    <option value="opcion3">Opción 3</option>
+                <label class="label_marca">Calibrar:</label>
+                <select class="opcion-dash opcion-calibrar" name="calibre" id="calibre">
+                    <option value='Todo'>Todo</option>
+                    <option value='SumaX'>Recuento: X</option>
                 </select>
             </div>
             <div>
-                <label for="input5">Input 5</label>
-                <select id="input5" name="input5">
-                    <option value="opcion1">Opción 1</option>
-                    <option value="opcion2">Opción 2</option>
-                    <option value="opcion3">Opción 3</option>
+                <label class="label_marca" for="dict">Mes:</label>
+                <select class="opcion-dash" name="mes-opcion" id="opcion-dash">
+                    <option value="Ultimo">Último</option>
+                    <option value="Todos">Todos</option>
+                    <option value=01>Enero</option>
+                    <option value=02>Febrero</option>
+                    <option value=03>Marzo</option>
+                    <option value=04>Abril</option>
+                    <option value=05>Mayo</option>
+                    <option value=06>Junio</option>
+                    <option value=07>Julio</option>
+                    <option value=08>Agosto</option>
+                    <option value=09>Septiembre</option>
+                    <option value=10>Octubre</option>
+                    <option value=11>Noviembre</option>
+                    <option value=12>Diciembre</option>
                 </select>
             </div>
             <div>
-                <label for="input6">Input 6</label>
-                <select id="input6" name="input6">
-                    <option value="opcion1">Opción 1</option>
-                    <option value="opcion2">Opción 2</option>
-                    <option value="opcion3">Opción 3</option>
+                <label class="label_marca" for="dict">Año:</label>
+                <select class="opcion-dash AÑO" name="año-opcion" id="opcion-dash">
+                    <option value="2024">2024</option>
                 </select>
             </div>
         </div>
@@ -86,43 +111,61 @@
         <!-- Segunda fila del formulario -->
         <div class="form-row hidden" id="part2">
             <div>
-                <label for="input7">Input 7</label>
-                <select id="input7" name="input7">
-                    <option value="opcion1">Opción 1</option>
-                    <option value="opcion2">Opción 2</option>
-                    <option value="opcion3">Opción 3</option>
+                <label class="label_marca" for="dict">Desde:</label>
+                <select class="opcion-dash MES" name="desde-opcion" id="opcion-dash">
+                    <option value=->-</option>
+                    <option value=01>Enero</option>
+                    <option value=02>Febrero</option>
+                    <option value=03>Marzo</option>
+                    <option value=04>Abril</option>
+                    <option value=05>Mayo</option>
+                    <option value=06>Junio</option>
+                    <option value=07>Julio</option>
+                    <option value=08>Agosto</option>
+                    <option value=09>Septiembre</option>
+                    <option value=10>Octubre</option>
+                    <option value=11>Noviembre</option>
+                    <option value=12>Diciembre</option>
                 </select>
             </div>
             <div>
-                <label for="input8">Input 8</label>
-                <select id="input8" name="input8">
-                    <option value="opcion1">Opción 1</option>
-                    <option value="opcion2">Opción 2</option>
-                    <option value="opcion3">Opción 3</option>
+                <label class="label_marca" for="dict">Hasta:</label>
+                <select class="opcion-dash MES" name="hasta-opcion" id="opcion-dash">
+                    <option value=->-</option>
+                    <option value=01>Enero</option>
+                    <option value=02>Febrero</option>
+                    <option value=03>Marzo</option>
+                    <option value=04>Abril</option>
+                    <option value=05>Mayo</option>
+                    <option value=06>Junio</option>
+                    <option value=07>Julio</option>
+                    <option value=08>Agosto</option>
+                    <option value=09>Septiembre</option>
+                    <option value=10>Octubre</option>
+                    <option value=11>Noviembre</option>
+                    <option value=12>Diciembre</option>
                 </select>
             </div>
             <div>
-                <label for="input9">Input 9</label>
-                <select id="input9" name="input9">
-                    <option value="opcion1">Opción 1</option>
-                    <option value="opcion2">Opción 2</option>
-                    <option value="opcion3">Opción 3</option>
+                <label class="label_marca" for="dict">Modo:</label>
+                <select class="opcion-dash MODO" name="modo-opcion" id="opcion-dash">
+                    <option value="Cerrado">Mes Cerrado</option>
+                    <option value="Acumulativo">Acumulativo</option>
                 </select>
             </div>
             <div>
-                <label for="input10">Input 10</label>
-                <select id="input10" name="input10">
-                    <option value="opcion1">Opción 1</option>
-                    <option value="opcion2">Opción 2</option>
-                    <option value="opcion3">Opción 3</option>
+                <label class="label_marca" for="dict">Conversión:</label>
+                <select class="opcion-dash CONVERSION" name="conversion-opcion" id="opcion-dash">
+                    <option value="GS">Guaraníes</option>
+                    <option value="USD">Dólares</option>
                 </select>
             </div>
             <div>
-                <label for="input11">Input 11</label>
-                <select id="input11" name="input11">
-                    <option value="opcion1">Opción 1</option>
-                    <option value="opcion2">Opción 2</option>
-                    <option value="opcion3">Opción 3</option>
+                <label class="label_marca" for="dict">Tipo:</label>
+                <select class="opcion-dash" name="tipo-opcion" id="columna_x1">
+                    <option value='Total'>Total</option>
+                    <option value='TNP'>TNP</option>
+                    <option value='TP'>TP</option>
                 </select>
             </div>
             <div>
@@ -141,7 +184,16 @@
         <!-- Botón de envío del formulario -->
         <button type="submit">Enviar Formulario</button>
     </form>
-    
+
+    <main>
+        <section class="container-box">
+            <div class="box box_interactivo"><canvas id="myChart"></canvas></div>
+        </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.umd.js"></script>
+
     <script>
         function togglePart2() {
             const part2 = document.getElementById('part2');
@@ -151,6 +203,37 @@
                 part2.classList.add('hidden');
             }
         }
+    </script>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+        var X1 = JSON.parse('{{ X1|escapejs}}');
+        var Y1 = JSON.parse('{{ Y1|escapejs}}');
+        var grafico = JSON.parse('{{ grafico|escapejs}}');
+
+        new Chart(ctx, {
+            type: grafico,
+            data: {
+                datasets: [{
+                    label: 'Y1',
+                    data: Y1,
+                }],
+                labels: X1
+            },
+            options: {
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Prueba'
+                    }
+                },
+                scales: {
+                    y: {
+                        stacked: true
+                    }
+                }
+            }
+        });
     </script>
 </body>
 </html>
