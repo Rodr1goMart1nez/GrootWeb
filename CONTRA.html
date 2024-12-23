@@ -1,5 +1,3 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,22 +16,29 @@
             justify-content: space-between;
             margin-bottom: 5px; /* Reducir el margen inferior */
         }
+
         .form-row div {
             flex: 1;
             margin-right: 5px; /* Reducir el margen derecho */
+            display: flex;
+            align-items: center; /* Alinear verticalmente */
         }
+
         .form-row div:last-child {
             margin-right: 0;
         }
+
         .hidden {
             display: none;
         }
-        select {
-            width: 100%; /* Asegura que los select llenen el ancho del contenedor */
-        }
+
         label {
-            display: block;
-            margin-bottom: 2px; /* Reduce el margen inferior del label */
+            display: inline-block;
+            margin-right: 5px; /* Espacio entre label y select */
+        }
+
+        select {
+            flex: 1;
         }
     </style>
 </head>
@@ -42,8 +47,8 @@
         <img class="itau_logo" src="{% static 'imgs/groot/Img/Itaú_Unibanco_logo.png' %}" alt="">
         <h1 class="titulo_groot">Contracargo Interactivo</h1>
     </header>
-
-    <form class="form-dash" action="/contra/grafico_interactivo/" method="POST">{% csrf_token %}
+ 
+    <form class="form-dash-interactivo" action="/contra/grafico_interactivo/" method="POST">{% csrf_token %}
         <!-- Primera fila del formulario -->
         <div class="form-row" id="part1">
             <div>
@@ -107,7 +112,7 @@
                 </select>
             </div>
         </div>
-        
+        <hr>
         <!-- Segunda fila del formulario -->
         <div class="form-row hidden" id="part2">
             <div>
@@ -177,23 +182,23 @@
                 </select>
             </div>
         </div>
-        
+       
         <!-- Botón para mostrar/ocultar la segunda parte -->
-        <button type="button" onclick="togglePart2()">Mostrar/Ocultar Parte 2</button>
-        
+        <button class="boton-form" type="button" onclick="togglePart2()">Más</button>
+       
         <!-- Botón de envío del formulario -->
-        <button type="submit">Enviar Formulario</button>
+        <button class="boton-form" type="submit">Generar</button>
     </form>
-
+ 
     <main>
         <section class="container-box">
             <div class="box box_interactivo"><canvas id="myChart"></canvas></div>
         </section>
     </main>
-
+ 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.0.1/chart.umd.js"></script>
-
+ 
     <script>
         function togglePart2() {
             const part2 = document.getElementById('part2');
@@ -204,13 +209,13 @@
             }
         }
     </script>
-
+ 
     <script>
         const ctx = document.getElementById('myChart');
         var X1 = JSON.parse('{{ X1|escapejs}}');
         var Y1 = JSON.parse('{{ Y1|escapejs}}');
         var grafico = JSON.parse('{{ grafico|escapejs}}');
-
+ 
         new Chart(ctx, {
             type: grafico,
             data: {
