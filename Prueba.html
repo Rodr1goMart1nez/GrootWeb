@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con Datos Persistentes</title>
+</head>
+<body>
+    <form id="miFormulario" method="post">
+        <label for="opcion1">Opción 1:</label>
+        <select id="opcion1" name="opcion1">
+            <option value="opcion1a">Opción 1A</option>
+            <option value="opcion1b">Opción 1B</option>
+            <option value="opcion1c">Opción 1C</option>
+        </select><br><br>
+        <label for="opcion2">Opción 2:</label>
+        <select id="opcion2" name="opcion2">
+            <option value="opcion2a">Opción 2A</option>
+            <option value="opcion2b">Opción 2B</option>
+            <option value="opcion2c">Opción 2C</option>
+        </select><br><br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <script>
+        // Añade un evento al formulario con id 'miFormulario' que se ejecuta al enviar el formulario
+        document.getElementById('miFormulario').addEventListener('submit', function(event) {
+            // Previene el comportamiento por defecto del formulario (recargar la página)
+            event.preventDefault();
+            // Obtiene los valores de los campos con id 'opcion1' y 'opcion2'
+            const opcion1 = document.getElementById('opcion1').value;
+            const opcion2 = document.getElementById('opcion2').value;
+            // Guarda los valores en el almacenamiento local del navegador
+            localStorage.setItem('opcion1', opcion1);
+            localStorage.setItem('opcion2', opcion2);
+        });
+
+        // Función que se ejecuta cuando la ventana se carga
+        window.onload = function() {
+            // Obtiene los valores almacenados en el almacenamiento local
+            const opcion1 = localStorage.getItem('opcion1');
+            const opcion2 = localStorage.getItem('opcion2');
+            // Si hay un valor almacenado para 'opcion1', lo asigna al campo con id 'opcion1'
+            if (opcion1) {
+                document.getElementById('opcion1').value = opcion1;
+            }
+            // Si hay un valor almacenado para 'opcion2', lo asigna al campo con id 'opcion2'
+            if (opcion2) {
+                document.getElementById('opcion2').value = opcion2;
+            }
+        };
+    </script>
+</body>
+</html>
