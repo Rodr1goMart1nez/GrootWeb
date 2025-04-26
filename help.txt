@@ -1,1 +1,8 @@
-SELECT CONVERT(VARCHAR, CONVERT(DATETIME, CONVERT(DATE, '2025-03-06 15:45:30.123')), 120) AS FechaComoTexto;
+SELECT 
+    DATEADD(SECOND, 
+        CAST(SUBSTRING(BanknetTime, 5, 2) AS INT) + -- Segundos
+        CAST(SUBSTRING(BanknetTime, 3, 2) AS INT) * 60 + -- Minutos convertidos a segundos
+        CAST(LEFT(BanknetTime, 2) AS INT) * 3600,  -- Horas convertidas a segundos
+        CAST(BanknetDate AS DATETIME)              -- Fecha original
+    ) AS FechaCompleta
+FROM TuTabla;
