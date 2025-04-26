@@ -55,16 +55,4 @@ CONVERT(INT,
 
 
 
-CONVERT(VARCHAR, 
-    REPLACE(
-        REPLACE(
-            REPLACE(
-                C.BUSBCCARDN + 
-                CONVERT(VARCHAR(19), CAST(C.BUSBCTRNDT AS DATETIME), 120), 
-                '-', '' -- Elimina '-'
-            ), 
-            ':', '' -- Elimina ':'
-        ), 
-        ' ', '' -- Elimina espacios vacíos
-    )
-)
+SELECT CONVERT(VARCHAR(10), CAST('2025-03-01 12:34:56' AS DATETIME), 120) AS FechaSolo;
