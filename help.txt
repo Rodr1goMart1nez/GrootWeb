@@ -56,3 +56,60 @@ CONVERT(INT,
 
 
 SELECT CONVERT(VARCHAR(10), CAST('2025-03-01 12:34:56' AS DATETIME), 120) AS FechaSolo;
+
+
+
+
+
+
+
+
+
+SELECT 
+    M.[Edit Num],
+    M.[Edit Description],
+    M.[Banknet Date (DE 63 SF 2)],
+    M.[Banknet Time (HHMMSS)],
+    M.[PAN (DE 2)],
+    M.[Cardholder Tran Type (DE 3 SF 1)],
+    M.[Tran Amt (DE 4)],
+    M.[Transmission Date (DE 7 SF 1)],
+    M.[Transmission Time (DE 7 SF 2)],
+    M.[System Trace Audit Num (DE 11)],
+    M.[Expiration Date (DE 14)],
+    M.[MCC (DE 18)],
+    M.[POS Entry Mode (DE 22)],
+    M.[Acq ID (DE 32)],
+    M.[Forwarding ID (DE 33)],
+    M.[Response Code (DE 39)],
+    M.[Term ID (DE 41)],
+    M.[Acceptor ID (DE 42)],
+    M.[Acceptor Name (DE 43 SF 1)],
+    M.[Acceptor Street Address (DE 122 SE 001 SF 001)],
+    M.[Acceptor Country Subdivision (DE 122 SE 001 SF 002)],
+    M.[Aggregate Merch Name],
+    M.[MAID (DE 48 SE 32)],
+    M.[Track Present 0=No Trk, 2=Trk 2, 3=Both Trk 1 & 2],
+    M.[Extended Service Code (DE 35)],
+    M.[Extended Service Code (DE 45)],
+    M.[TCC (DE 48 POS 1)],
+    M.[SLI (DE 48 SE 42)],
+    M.[UCAF (DE 48 SE 43)],
+    M.[Product Code],
+    M.[POS Data Extended Condition Code (DE 48 SE 61)],
+    M.[Chip Validation (DE 48 SE 74)],
+    M.[Mastercard Electronic Acceptance ID (DE 48 SE 76)],
+    M.[PIN Service Code (DE 48 SE 80)],
+    M.[AVS (DE 48 SE 82)],
+    M.[AVS Response (DE 48 SE 83)],
+    M.[Lodging/Auto Rental Ind (DE 48 SE 90)],
+    M.[Mastercard Promotion Code (DE 48 SE 95)],
+    M.[POS Data (DE 61 SF 1-11)],
+    M.[POS Country Code (DE 61 SF 13)],
+    M.[POS Postal Code (DE 61 SF 14)],
+    M.[Banknet Ref Num (DE 63 SF 2)],
+    M.[PFID (DE 48 SE 37 SF 1)],
+    M.[Sub-Merch ID (DE 48 SE 37 SF 3)],
+    M.[TLID (DE 105 SE 001)]
+FROM 
+    TuTabla M;
