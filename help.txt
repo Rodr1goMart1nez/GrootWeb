@@ -15,32 +15,14 @@ SELECT CAST(CONVERT(VARCHAR(19), CAST('2025-03-06 15:45:30.123' AS DATETIME), 12
 
 
 
-SELECT DISTINCT
-    C.BUSBCCARDN + '' + CONVERT(VARCHAR, CONVERT(DATETIME, CONVERT(DATE, C.BUSBCTRNDT)), 120) AS ID_C,
-    M.[PAN (DE 2)] + '' + CONVERT(VARCHAR, DATEADD(SECOND,
-        CAST(SUBSTRING(M.[Banknet Time (HHMMSS)], 5, 2) AS INT) +
-        CAST(SUBSTRING(M.[Banknet Time (HHMMSS)], 3, 2) AS INT) * 60 +
-        CAST(LEFT(M.[Banknet Time (HHMMSS)], 2) AS INT) * 3600, 
-        CAST(M.[Banknet Date (DE 63 SF 2)] AS DATETIME)
-    ), 120) AS ID_M,
-    C.BUSBCCARDN,
-    C.BUSBCCMNAM,
-    C.BUSBCRESCO,
-    C.BUSBCRESDS,
-    C.BUSBCEXTRS,
-    C.BUSBCEXTRD,
-    M.*
-FROM [dbo].[CORPDW_ClipDeSeguridad] C
-RIGHT JOIN MC_PEDIDO_CLAU M
-    ON (C.BUSBCCARDN + '' + CONVERT(VARCHAR, CONVERT(DATETIME, CONVERT(DATE, C.BUSBCTRNDT)), 120)) =
-       (M.[PAN (DE 2)] + '' + CONVERT(VARCHAR, DATEADD(SECOND,
-            CAST(SUBSTRING(M.[Banknet Time (HHMMSS)], 5, 2) AS INT) +
-            CAST(SUBSTRING(M.[Banknet Time (HHMMSS)], 3, 2) AS INT) * 60 +
-            CAST(LEFT(M.[Banknet Time (HHMMSS)], 2) AS INT) * 3600, 
-            CAST(M.[Banknet Date (DE 63 SF 2)] AS DATETIME)
-       ), 120))
-WHERE 
-    (C.BUSBCRESCO = '63' OR C.BUSBCRESCO = '65')
-    AND C.BUSBCCARDN LIKE '5%'
-    AND C.BUSBCTRNDT LIKE '2025-03%'
-ORDER BY C.BUSBCRESCO DESC;
+SELECT 
+    CONVERT(VARCHAR, 
+        DATEADD(SECOND, 
+            CAST(SUBSTRING(BanknetTime, 5, 2) AS INT) + -- Segundos
+            CAST(SUBSTRING(BanknetTime, 3, 2) AS INT) * 60 + -- Minutos convertidos a segundos
+            CAST(LEFT(BanknetTime, 2) AS INT) * 3600,  -- Horas convertidas a segundos
+            CAST(BanknetDate AS DATETIME)              -- Fecha original
+        ), 
+        120 -- Estilo para el formato 'YYYY-MM-DD HH:MI:SS'
+    ) AS FechaCompletaTexto
+FROM TuTabla;
