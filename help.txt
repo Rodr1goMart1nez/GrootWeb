@@ -59,16 +59,8 @@ CONVERT(VARCHAR,
     REPLACE(
         REPLACE(
             REPLACE(
-                M.[PAN (DE 2)] + 
-                CONVERT(VARCHAR, 
-                    DATEADD(SECOND,
-                        CAST(SUBSTRING(M.[Banknet Time (HHMMSS)], 5, 2) AS INT) + -- Segundos
-                        CAST(SUBSTRING(M.[Banknet Time (HHMMSS)], 3, 2) AS INT) * 60 + -- Minutos a segundos
-                        CAST(LEFT(M.[Banknet Time (HHMMSS)], 2) AS INT) * 3600,  -- Horas a segundos
-                        CAST(M.[Banknet Date (DE 63 SF 2)] AS DATETIME)  -- Fecha original
-                    ), 
-                    120 -- Formato 'YYYY-MM-DD HH:MI:SS'
-                ), 
+                C.BUSBCCARDN + 
+                CONVERT(VARCHAR(19), CAST(C.BUSBCTRNDT AS DATETIME), 120), 
                 '-', '' -- Elimina '-'
             ), 
             ':', '' -- Elimina ':'
