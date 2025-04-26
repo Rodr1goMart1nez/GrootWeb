@@ -1,5 +1,1 @@
-curl -O https://files.pythonhosted.org/packages/source/p/pandas/pandas-2.1.2.tar.gz
-
-CertUtil -hashfile pandas-2.1.2.tar.gz SHA256
-
-pip install pandas==2.1.2 --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org
+SELECT CONVERT(VARCHAR(10), CAST('2025-03-06 00:00:00.000' AS DATETIME), 103) AS FechaFormateada;
