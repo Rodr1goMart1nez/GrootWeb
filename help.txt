@@ -6,3 +6,6 @@ SELECT
         CAST(BanknetDate AS DATETIME)              -- Fecha original
     ) AS FechaCompleta
 FROM TuTabla;
+
+
+SELECT CAST(CONVERT(VARCHAR(19), CAST('2025-03-06 15:45:30.123' AS DATETIME), 120) AS DATETIME) AS FechaSinMilisegundos;
