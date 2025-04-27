@@ -113,3 +113,46 @@ SELECT
     M.[TLID (DE 105 SE 001)]
 FROM 
     TuTabla M;
+
+
+
+
+
+
+
+
+
+
+CONVERT(VARCHAR(150),
+    (
+        CONVERT(VARCHAR(10), C.BUSBCTRNDT, 120) + '' +
+        C.BUSBCCARDN + '' +
+        LOWER(
+            REPLACE(
+                REPLACE(
+                    REPLACE(
+                        REPLACE(
+                            REPLACE(
+                                REPLACE(
+                                    REPLACE(
+                                        REPLACE(
+                                            REPLACE(
+                                                REPLACE(
+                                                    REPLACE(
+                                                        REPLACE(
+                                                            REPLACE(C.BUSBCCMNAM, '!', ''), '·', ''
+                                                        ), '$', ''
+                                                    ), '%', ''
+                                                ), '&', ''
+                                            ), '/', ''
+                                        ), '(', ''
+                                    ), ')', ''
+                                ), '?', ''
+                            ), '.', ''
+                        ), ' ', ''
+                    )
+                )
+            )
+        ) + '' + C.BUSBCRESCO
+    )
+) COLLATE SQL_Latin1_General_CP1_CI_AI
