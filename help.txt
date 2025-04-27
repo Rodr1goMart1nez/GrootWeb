@@ -158,3 +158,47 @@ CONVERT(VARCHAR(150),
         ) + '' + C.BUSBCRESCO
     )
 ) COLLATE SQL_Latin1_General_CP1_CI_AI
+
+
+
+
+
+
+
+
+CONVERT(VARCHAR(130),
+    (
+        CONVERT(VARCHAR(10), M.[Banknet Date (DE 63 SF 2)], 120) + '' +
+        M.[PAN (DE 2)] + '' +
+        LOWER(
+            REPLACE(
+                REPLACE(
+                    REPLACE(
+                        REPLACE(
+                            REPLACE(
+                                REPLACE(
+                                    REPLACE(
+                                        REPLACE(
+                                            REPLACE(
+                                                REPLACE(
+                                                    REPLACE(
+                                                        REPLACE(
+                                                            REPLACE(
+                                                                REPLACE(M.[Acceptor Name (DE 43 SF 1)], '!', ''), '·', ''
+                                                            ), '$', ''
+                                                        ), '%', ''
+                                                    ), '&', ''
+                                                ), '/', ''
+                                            ), '(', ''
+                                        ), ')', ''
+                                    ), '?', ''
+                                ), '.', ''
+                            ), ' ', ''
+                        )
+                    )
+                )
+            )
+        ) + '' +
+        M.[Response Code (DE 39)]
+    )
+)
