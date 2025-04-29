@@ -202,3 +202,25 @@ CONVERT(VARCHAR(130),
         M.[Response Code (DE 39)]
     )
 )
+
+
+
+
+•Valores missing en pandas
+•Suma de arrays en numpy
+•Sumas time delta + time de otro tipo
+•Atributos de numpy: array.shape
+•Atributos de pandas: pd.merge
+• Función lambda
+• Función sum() en numpy
+• groupby() en pandas
+• Función pandas.info()
+• Función pandas: df.values()
+• Funcion pandas: df.head()
+• Función pandas: df.tail()
+• Función pandas: df.describe()
+• Métodos Python: .iloc y .loc
+• Método df.apply() en pandas
+• Función en pandas: .vstack y .ones
+• Funcion pandas: Pivot_table
+•Conocer como es un Print(i) de un for a un np concatenado
